@@ -1,0 +1,17 @@
+# Local development overrides
+# Mount source directories for real-time code changes without rebuild
+# ローカル開発用オーバーライド
+# ソースを直接マウントしてコード変更をリアルタイムで反映
+services:
+  app:
+    environment:
+      APP_DEBUG: "true"
+    volumes:
+      - ./src:/var/www/html/src
+      - ./templates:/var/www/html/templates
+      - ./resources:/var/www/html/resources
+  db:
+    # Expose DB port for local tools (e.g. TablePlus, DBeaver)
+    # ローカルのDBツールからアクセスできるようポートを公開
+    ports:
+      - "${DB_PORT:-3306}:3306"
