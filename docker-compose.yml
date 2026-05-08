@@ -1,0 +1,44 @@
+services:
+  # Application container (PHP 8.4 + Apache) / アプリケーションコンテナ
+  app:
+    build: .
+    ports:
+      - "${APP_PORT:-80}:80"
+    environment:
+      APP_DEBUG: ${APP_DEBUG:-false}
+      SECURITY_SALT: ${SECURITY_SALT}
+      DB_HOST: db
+      DB_USERNAME: ${DB_USERNAME:-irohaboard}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+      DB_DATABASE: ${DB_DATABASE:-irohaboard}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # Persist uploaded files outside the container / アップロードファイルをコンテナ外に永続化
+      - ./files:/var/www/html/files
+      - ./webroot/files:/var/www/html/webroot/files
+      - ./webroot/uploads:/var/www/html/webroot/uploads
+      # Persist logs and temp files / ログ・一時ファイルを永続化
+      - ./logs:/var/www/html/logs
+      - ./tmp:/var/www/html/tmp
+
+  # Database container (MariaDB) / データベースコンテナ
+  db:
+    image: mariadb:11
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_DATABASE:-irohaboard}
+      MYSQL_USER: ${DB_USERNAME:-irohaboard}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-password}
+    volumes:
+      # Persist database data / DBデータを永続化
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
