@@ -1,0 +1,52 @@
+<?php
+/*
+ * ローカル環境設定ファイル
+ * このファイルを config/app_local.php にコピーして環境に合わせて編集してください。
+ * Copy this file to config/app_local.php and edit for your environment.
+ */
+return [
+    'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
+
+    'Security' => [
+        'salt' => env('SECURITY_SALT', 'YOUR_RANDOM_SECURITY_SALT_HERE'),
+    ],
+
+    'Session' => [
+        'defaults' => 'php',
+        'cookie'   => 'CAKEPHP',
+        'timeout'  => 120,
+        'ini'      => [
+            'session.cookie_httponly' => true,
+        ],
+    ],
+
+    'Datasources' => [
+        'default' => [
+            'host'     => 'localhost',
+            'username' => 'YOUR_DB_USERNAME',
+            'password' => 'YOUR_DB_PASSWORD',
+            'database' => 'YOUR_DB_NAME',
+            'driver'   => 'Cake\Database\Driver\Mysql',
+            'url'      => env('DATABASE_URL', null),
+        ],
+        'test' => [
+            'host'     => 'localhost',
+            'username' => 'YOUR_DB_USERNAME',
+            'password' => 'YOUR_DB_PASSWORD',
+            'database' => 'YOUR_DB_NAME',
+            'driver'   => 'Cake\Database\Driver\Mysql',
+            'url'      => env('DATABASE_TEST_URL', null),
+        ],
+    ],
+
+    'EmailTransport' => [
+        'default' => [
+            'host'     => 'localhost',
+            'port'     => 25,
+            'username' => null,
+            'password' => null,
+            'client'   => null,
+            'url'      => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+        ],
+    ],
+];

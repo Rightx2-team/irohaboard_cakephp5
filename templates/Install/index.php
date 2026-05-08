@@ -1,0 +1,45 @@
+<?php $appName = defined('APP_NAME') ? APP_NAME : 'iroha Board'; ?>
+<div class="install-index">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <?= $appName ?> Installer
+        </div>
+        <div class="panel-body">
+            <p><?= $appName ?> のインストール及び管理者アカウントの作成を行います。</p>
+            <ul>
+                <li>作成する管理者アカウントのログインIDとパスワードを入力し、「インストール」ボタンをクリックしてください。</li>
+                <li>管理者ログインIDは4文字以上32文字以内で、英数字のみを使用してください。</li>
+                <li>パスワードは4文字以上32文字以内で、英数字のみを使用してください。</li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            <?= $this->Flash->render(); ?>
+            <form method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label class="col col-sm-3 control-label">管理者ログインID</label>
+                    <div class="col col-sm-9">
+                        <input name="data[User][username]" class="form-control" value="<?= h($username ?? '') ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col col-sm-3 control-label">パスワード</label>
+                    <div class="col col-sm-9">
+                        <input name="data[User][password]" class="form-control" autocomplete="new-password" type="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col col-sm-3 control-label">パスワード(確認用)</label>
+                    <div class="col col-sm-9">
+                        <input name="data[User][password2]" class="form-control" autocomplete="new-password" type="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col col-sm-3 control-label"></label>
+                    <div class="col col-sm-9">
+                        <input class="btn btn-primary" type="submit" value="インストール">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

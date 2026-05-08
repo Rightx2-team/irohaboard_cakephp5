@@ -1,0 +1,31 @@
+# 機密情報・環境依存ファイル
+/config/app_local.php
+/.env
+
+# 依存パッケージ（composer install で再生成可能）
+/vendor/
+
+# キャッシュ・ログ・一時ファイル
+/tmp/*
+/logs/*
+!/tmp/cache/
+!/tmp/cache/models/
+!/tmp/cache/persistent/
+!/tmp/cache/views/
+!/tmp/.gitkeep
+!/logs/.gitkeep
+
+# アップロードファイル（ユーザーデータ）
+/files/*
+!/files/.gitkeep
+/webroot/files/*
+!/webroot/files/.gitkeep
+/webroot/uploads/*
+!/webroot/uploads/.gitkeep
+
+# OS・エディタ生成ファイル
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

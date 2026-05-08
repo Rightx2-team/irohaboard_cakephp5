@@ -1,0 +1,453 @@
+# iroha Board - English (en_US)
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+
+msgid "[%s] を削除してもよろしいですか?"
+msgstr "Are you sure you want to delete [%s]?"
+
+msgid "<< 戻る"
+msgstr "<< Back"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "CSV出力"
+msgstr "Export CSV"
+
+msgid "URL / ファイル名"
+msgstr "URL / Filename"
+
+msgid "アップロード"
+msgstr "Upload"
+
+msgid "アップロード完了"
+msgstr "Upload Complete"
+
+msgid "お知らせ"
+msgstr "News"
+
+msgid "お知らせ一覧"
+msgstr "News List"
+
+msgid "お知らせ追加"
+msgstr "Add News"
+
+msgid "お知らせ編集"
+msgstr "Edit News"
+
+msgid "キャンセル"
+msgstr "Cancel"
+
+msgid "グループ"
+msgstr "Group"
+
+msgid "グループがまだ登録されていません"
+msgstr "No groups have been registered yet."
+
+msgid "グループ一覧"
+msgstr "Group List"
+
+msgid "グループ追加"
+msgstr "Add Group"
+
+msgid "グループ編集"
+msgstr "Edit Group"
+
+msgid "グループ名"
+msgstr "Group Name"
+
+msgid "コース"
+msgstr "Course"
+
+msgid "コースがまだ登録されていません"
+msgstr "No courses have been registered yet."
+
+msgid "コース一覧"
+msgstr "Course List"
+
+msgid "コース概要"
+msgstr "Course Overview"
+
+msgid "コース追加"
+msgstr "Add Course"
+
+msgid "コース編集"
+msgstr "Edit Course"
+
+msgid "コース名"
+msgstr "Course Name"
+
+msgid "コピーライト"
+msgstr "Copyright"
+
+msgid "コメント"
+msgstr "Comment"
+
+msgid "コンテンツ"
+msgstr "Content"
+
+msgid "コンテンツ一覧"
+msgstr "Content List"
+
+msgid "コンテンツ種別"
+msgstr "Content Type"
+
+msgid "コンテンツ追加"
+msgstr "Add Content"
+
+msgid "コンテンツ編集"
+msgstr "Edit Content"
+
+msgid "コンテンツ名"
+msgstr "Content Name"
+
+msgid "さん"
+msgstr ""
+
+msgid "システム設定"
+msgstr "System Settings"
+
+msgid "システム名"
+msgstr "System Name"
+
+msgid "ステータス"
+msgstr "Status"
+
+msgid "タイトル"
+msgstr "Title"
+
+msgid "テーマカラー"
+msgstr "Theme Color"
+
+msgid "テスト結果"
+msgstr "Test Results"
+
+msgid "テスト問題一覧"
+msgstr "Test Question List"
+
+msgid "ドラッグアンドドロップでコンテンツの並び順が変更できます"
+msgstr "You can reorder content by drag and drop."
+
+msgid "ドラッグアンドドロップで出題順が変更できます。"
+msgstr "You can reorder questions by drag and drop."
+
+msgid "ドラッグアンドドロップで表示順が変更できます。"
+msgstr "You can reorder items by drag and drop."
+
+msgid "パスワード"
+msgstr "Password"
+
+msgid "パスワード (確認用)"
+msgstr "Password (Confirmation)"
+
+msgid "ファイルアップロード"
+msgstr "File Upload"
+
+msgid "ページ"
+msgstr " pages"
+
+msgid "メールアドレス"
+msgstr "Email Address"
+
+msgid "メモ"
+msgstr "Notes"
+
+msgid "ユーザ"
+msgstr "User"
+
+msgid "ユーザ一覧"
+msgstr "User List"
+
+msgid "ユーザ追加"
+msgstr "Add User"
+
+msgid "ユーザ編集"
+msgstr "Edit User"
+
+msgid "ようこそ"
+msgstr "Welcome,"
+
+msgid "ログアウト"
+msgstr "Logout"
+
+msgid "ログイン"
+msgstr "Login"
+
+msgid "ログインID"
+msgstr "Login ID"
+
+msgid "一般ユーザ"
+msgstr "General User"
+
+msgid "一覧を表示"
+msgstr "Show List"
+
+msgid "解説"
+msgstr "Explanation"
+
+msgid "回答"
+msgstr "Answer"
+
+msgid "回答形式"
+msgstr "Answer Type"
+
+msgid "開始"
+msgstr "Start"
+
+msgid "学習"
+msgstr "Learning"
+
+msgid "学習回数"
+msgstr "Times"
+
+msgid "学習開始日"
+msgstr "Start Date"
+
+msgid "学習時間"
+msgstr "Study Time"
+
+msgid "学習日時"
+msgstr "Study Date"
+
+msgid "学習履歴"
+msgstr "Learning History"
+
+msgid "学習履歴一覧"
+msgstr "Learning History"
+
+msgid "完了"
+msgstr "Complete"
+
+msgid "管理者"
+msgstr "Admin"
+
+msgid "管理者ログイン"
+msgstr "Admin Login"
+
+msgid "管理者ログインへ"
+msgstr "Go to Admin Login"
+
+msgid "許可拡張子"
+msgstr "Allowed Extensions"
+
+msgid "空欄の場合は常時公開"
+msgstr "If blank, always public"
+
+msgid "形式"
+msgstr "Format"
+
+msgid "経過"
+msgstr "Elapsed"
+
+msgid "結果"
+msgstr "Result"
+
+msgid "件"
+msgstr " items"
+
+msgid "検索"
+msgstr "Search"
+
+msgid "権限"
+msgstr "Role"
+
+msgid "公開"
+msgstr "Public"
+
+msgid "公開開始日時"
+msgstr "Publish Start"
+
+msgid "公開状態"
+msgstr "Publish Status"
+
+msgid "更新日時"
+msgstr "Updated"
+
+msgid "合格"
+msgstr "Pass"
+
+msgid "合格ライン (%)"
+msgstr "Pass Rate (%)"
+
+msgid "合格基準得点"
+msgstr "Pass Score"
+
+msgid "合格点"
+msgstr "Passing Score"
+
+msgid "合計"
+msgstr "Total"
+
+msgid "合否"
+msgstr "Pass/Fail"
+
+msgid "最終"
+msgstr "Last"
+
+msgid "最大サイズ"
+msgstr "Max Size"
+
+msgid "採点"
+msgstr "Submit"
+
+msgid "採点してよろしいですか？"
+msgstr "Are you sure you want to submit?"
+
+msgid "採点確認"
+msgstr "Submit Confirmation"
+
+msgid "作成日時"
+msgstr "Created"
+
+msgid "削除"
+msgstr "Delete"
+
+msgid "残り時間"
+msgstr "Time Left"
+
+msgid "氏名"
+msgstr "Name"
+
+msgid "質問一覧"
+msgstr "Question List"
+
+msgid "質問文"
+msgstr "Question"
+
+msgid "種別"
+msgstr "Type"
+
+msgid "受講コース"
+msgstr "Enrolled Courses"
+
+msgid "受講者ログイン"
+msgstr "Student Login"
+
+msgid "受講者ログインへ"
+msgstr "Go to Student Login"
+
+msgid "出題数"
+msgstr "Number of Questions"
+
+msgid "所属グループ"
+msgstr "Group"
+
+msgid "新しいパスワード"
+msgstr "New Password"
+
+msgid "新しいパスワード (確認用)"
+msgstr "New Password (Confirmation)"
+
+msgid "新しいパスワード (変更する場合のみ)"
+msgstr "New Password (Only if changing)"
+
+msgid "新規質問"
+msgstr "New Question"
+
+msgid "新規問題"
+msgstr "New Question"
+
+msgid "制限時間 (秒, 0で無制限)"
+msgstr "Time Limit (sec, 0 = unlimited)"
+
+msgid "制限時間を過ぎましたので自動採点を行います。"
+msgstr "Time is up. Submitting automatically."
+
+msgid "正解"
+msgstr "Correct"
+
+msgid "設定"
+msgstr "Settings"
+
+msgid "設定されていません"
+msgstr "Not set"
+
+msgid "選択肢"
+msgstr "Choices"
+
+msgid "選択肢／正解"
+msgstr "Choices / Answer"
+
+msgid "前回学習日"
+msgstr "Last Studied"
+
+msgid "全て"
+msgstr "All"
+
+msgid "全体のお知らせ"
+msgstr "Announcements"
+
+msgid "送信"
+msgstr "Submit"
+
+msgid "送信してよろしいですか？"
+msgstr "Are you sure you want to submit?"
+
+msgid "送信確認"
+msgstr "Submit Confirmation"
+
+msgid "対象期間"
+msgstr "Period"
+
+msgid "中断"
+msgstr "Interrupted"
+
+msgid "追加"
+msgstr "Add"
+
+msgid "得点"
+msgstr "Score"
+
+msgid "日付"
+msgstr "Date"
+
+msgid "非公開"
+msgstr "Private"
+
+msgid "備考"
+msgstr "Remarks"
+
+msgid "表示ファイル名"
+msgstr "Display Name"
+
+msgid "表示順"
+msgstr "Order"
+
+msgid "不合格"
+msgstr "Fail"
+
+msgid "不正解"
+msgstr "Incorrect"
+
+msgid "編集"
+msgstr "Edit"
+
+msgid "保存"
+msgstr "Save"
+
+msgid "保存名"
+msgstr "Saved As"
+
+msgid "本文"
+msgstr "Body"
+
+msgid "未完了"
+msgstr "Incomplete"
+
+msgid "戻る"
+msgstr "Back"
+
+msgid "問"
+msgstr "Q"
+
+msgid "問題文"
+msgstr "Question"
+
+msgid "理解度"
+msgstr "Understanding"
+
+msgid "理解度を選択して終了してください"
+msgstr "Please select your understanding level to finish."
