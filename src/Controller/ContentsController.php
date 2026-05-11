@@ -301,6 +301,28 @@ class ContentsController extends AppController
     }
 
     /**
+     * Resolve the actual file path by checking multiple storage locations.
+     * ファイル名から実際のパスを解決する（複数の保存先を順に確認）
+     *
+     * Search order / 検索順:
+     *   1. ROOT/files/          (uploaded via CakePHP5 / CakePHP5でアップロードされたファイル)
+     *   2. WWW_ROOT/uploads/    (migrated from CakePHP2 / CakePHP2から移行したファイル)
+     */
+    private function resolveFilePath(string $file_name): ?string
+    {
+        $candidates = [
+            ROOT    . DS . 'files'   . DS . $file_name,
+            WWW_ROOT . 'uploads' . DS . $file_name,
+        ];
+        foreach ($candidates as $path) {
+            if (file_exists($path)) {
+                return $path;
+            }
+        }
+        return null;
+    }
+
+    /**
      * File download / ファイルのダウンロード
      */
     public function fileDownload(int $content_id): Response
@@ -318,9 +340,9 @@ class ContentsController extends AppController
         }
 
         $safe_file_name = basename($content->url ?? '');
-        $file_path = ROOT . DS . 'files' . DS . $safe_file_name;
+        $file_path = $this->resolveFilePath($safe_file_name);
 
-        if (!file_exists($file_path)) {
+        if (!$file_path) {
             throw new NotFoundException(__('File not found'));
         }
 
@@ -346,9 +368,9 @@ class ContentsController extends AppController
         }
 
         $safe_file_name = basename($content->url ?? '');
-        $file_path = ROOT . DS . 'files' . DS . $safe_file_name;
+        $file_path = $this->resolveFilePath($safe_file_name);
 
-        if (!file_exists($file_path)) {
+        if (!$file_path) {
             throw new NotFoundException(__('File not found'));
         }
 
@@ -372,9 +394,9 @@ class ContentsController extends AppController
         }
 
         $safe_file_name = basename($file_name);
-        $file_path = ROOT . DS . 'files' . DS . $safe_file_name;
+        $file_path = $this->resolveFilePath($safe_file_name);
 
-        if (!file_exists($file_path)) {
+        if (!$file_path) {
             throw new NotFoundException(__('File not found'));
         }
 
