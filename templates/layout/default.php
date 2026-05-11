@@ -1,12 +1,12 @@
 <?php
 /**
- * iroha Board Project - CakePHP5用デフォルトレイアウト
+ * iroha Board Project - Default layout for CakePHP5. / CakePHP5用デフォルトレイアウト
  */
 use Cake\Core\Configure;
 
 $session = $this->request->getSession();
 
-// 管理画面か確認（URLパスで判定）
+// Check if it is the admin screen (determined by URL path). / 管理画面か確認（URLパスで判定）
 $path = $this->request->getUri()->getPath();
 $is_admin_page = str_contains($path, '/admin')
     && !in_array($this->request->getParam('action'), ['login', 'adminLogin']);

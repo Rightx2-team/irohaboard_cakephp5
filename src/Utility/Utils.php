@@ -1,12 +1,12 @@
 <?php
 /**
- * Utils - CakePHP5用ユーティリティクラス
- * CakePHP2のVendor/Utils.phpの互換クラス
+ * Utils - Utility class for CakePHP5. / Utils - CakePHP5用ユーティリティクラス
+ * Compatibility class for CakePHP2's Vendor/Utils.php. / CakePHP2のVendor/Utils.phpの互換クラス
  */
 class Utils
 {
     /**
-     * 秒数を HH:MM:SS 形式に変換
+     * Convert seconds to HH:MM:SS format. / 秒数を HH:MM:SS 形式に変換
      */
     public static function getHNSBySec(?int $sec): string
     {
@@ -18,7 +18,7 @@ class Utils
     }
 
     /**
-     * 日時を Y/m/d H:i 形式に変換
+     * Convert datetime to Y/m/d H:i format. / 日時を Y/m/d H:i 形式に変換
      */
     public static function getYMDHN(mixed $date): string
     {
@@ -34,7 +34,7 @@ class Utils
     }
 
     /**
-     * 日時を Y/m/d 形式に変換
+     * Convert datetime to Y/m/d format. / 日時を Y/m/d 形式に変換
      */
     public static function getYMD(mixed $date): string
     {
@@ -50,7 +50,7 @@ class Utils
     }
 
     /**
-     * 日時を Y年m月d日 形式に変換
+     * Convert datetime to Japanese date format (Y年m月d日). / 日時を Y年m月d日 形式に変換
      */
     public static function getYMDJP(mixed $date): string
     {

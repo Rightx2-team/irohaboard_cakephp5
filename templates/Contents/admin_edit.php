@@ -11,7 +11,7 @@ $(function() {
         changeKind();
     });
 
-    // 保存時、コード表示モードの場合、解除する（編集中の内容を反映するため）
+    // When saving, if in code view mode, deactivate it (to reflect the content being edited). / 保存時、コード表示モードの場合、解除する（編集中の内容を反映するため）
     $('form').submit(function() {
         if ($('input[name="kind"]:checked').val() === 'html') {
             if ($('#body').summernote('codeview.isActivated')) {
@@ -27,7 +27,7 @@ $(function() {
         $('[class*="kind-"]').hide();
         $('.kind-' + kind).show();
 
-        // summernote の起動／破棄
+        // Start / destroy summernote. / summernote の起動／破棄
         if (kind === 'html') {
             CommonUtil.setRichTextEditor('#body', <?= \Cake\Core\Configure::read('upload_image_maxsize') ?>, '<?= $this->Url->build('/') ?>');
         } else {
@@ -36,7 +36,7 @@ $(function() {
             }
         }
 
-        // アップロードフレームの切り替え
+        // Switch the upload frame. / アップロードフレームの切り替え
         var uploadUrl = '';
         if (kind === 'file') {
             uploadUrl = '<?= $this->Url->build(['action' => 'adminUpload', 'file']) ?>';
@@ -53,7 +53,7 @@ $(function() {
     }
 });
 
-// アップロード完了時に呼ばれる関数（iframe内のテンプレートから呼び出される）
+// Function called when upload is complete (called from the template inside the iframe). / アップロード完了時に呼ばれる関数（iframe内のテンプレートから呼び出される）
 function onUploadComplete(fileUrl, fileName) {
     $('#ContentUrl').val(fileUrl);
     $('#ContentFileName').val(fileName);

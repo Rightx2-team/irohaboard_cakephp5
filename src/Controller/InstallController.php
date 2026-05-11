@@ -36,7 +36,7 @@ class InstallController extends AppController
             if ($this->getRequest()->is('post')) {
                 $data = $this->getRequest()->getData();
 
-                // data[User][...] 形式で送られてくる
+                // Sent in the data[User][...] format / data[User][...] 形式で送られてくる
                 $userData = $data['data']['User'] ?? [];
                 $username  = $userData['username']  ?? '';
                 $password  = $userData['password']  ?? '';
@@ -58,7 +58,7 @@ class InstallController extends AppController
                     return null;
                 }
 
-                // スキーマ実行
+                // Execute schema / スキーマ実行
                 $sqlFile = ROOT . DS . 'config' . DS . 'Schema' . DS . 'app.sql';
                 if (!file_exists($sqlFile)) {
                     $sqlFile = dirname(ROOT) . DS . 'cakephp2_app' . DS . 'app' . DS . 'Config' . DS . 'Schema' . DS . 'app.sql';
@@ -81,7 +81,7 @@ class InstallController extends AppController
                     }
                 }
 
-                // 管理者作成
+                // Create admin user / 管理者作成
                 $usersTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Users');
                 $user = $usersTable->newEmptyEntity();
                 $user->username = $username;

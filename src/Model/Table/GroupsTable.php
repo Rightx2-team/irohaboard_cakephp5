@@ -25,7 +25,7 @@ class GroupsTable extends AppTable
         $this->addBehavior('Timestamp');
         $this->setPrimaryKey('id');
 
-        // CakePHP2の hasAndBelongsToMany に相当
+        // Equivalent to hasAndBelongsToMany in CakePHP2. / CakePHP2の hasAndBelongsToMany に相当
         $this->belongsToMany('Courses', [
             'joinTable'          => 'ib_groups_courses',
             'foreignKey'         => 'group_id',
@@ -46,8 +46,8 @@ class GroupsTable extends AppTable
     }
 
     /**
-     * デフォルトのソート順を適用するFinder
-     * CakePHP2の $order = "Group.title" に相当。
+     * Finder that applies the default sort order. / デフォルトのソート順を適用するFinder
+     * Equivalent to $order = "Group.title" in CakePHP2. / CakePHP2の $order = "Group.title" に相当。
      */
     public function findSorted(SelectQuery $query): SelectQuery
     {
@@ -55,10 +55,10 @@ class GroupsTable extends AppTable
     }
 
     /**
-     * 指定したグループに所属するユーザIDリストを取得
+     * Get the list of user IDs belonging to the specified group. / 指定したグループに所属するユーザIDリストを取得
      *
-     * @param int $group_id グループID
-     * @return array ユーザIDリスト
+     * @param int $group_id Group ID. / グループID
+     * @return array List of user IDs. / ユーザIDリスト
      */
     public function getUserIdByGroupID(int $group_id): array
     {

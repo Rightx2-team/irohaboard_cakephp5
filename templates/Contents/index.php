@@ -28,7 +28,7 @@ $is_admin_record = method_exists($this, 'isAdminPage') && $this->isAdminPage() &
 
     <div class="panel panel-info">
         <?php
-            // $course はエンティティ形式（Courses Table->get() が返す）
+            // $course is in entity format (returned by Courses Table->get()). / $course はエンティティ形式（Courses Table->get() が返す）
             $courseTitle = is_array($course) ? ($course['title'] ?? '') : ($course->title ?? '');
             $courseIntro = is_array($course) ? ($course['introduction'] ?? '') : ($course->introduction ?? '');
         ?>
@@ -59,7 +59,7 @@ $is_admin_record = method_exists($this, 'isAdminPage') && $this->isAdminPage() &
                 <tbody>
                 <?php foreach ($contents as $c): ?>
                 <?php
-                    // $c は rawQuery の結果で、フラットな連想配列
+                    // $c is the result of rawQuery, a flat associative array. / $c は rawQuery の結果で、フラットな連想配列
                     $c_id     = $c['id'] ?? 0;
                     $c_kind   = $c['kind'] ?? '';
                     $c_title  = $c['title'] ?? '';

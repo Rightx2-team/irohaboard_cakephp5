@@ -57,7 +57,7 @@
 	<?php
 		$question_index = 1;
 
-		// 問題IDをキーに成績を参照できる配列を作成
+		// Create an array that can reference results by question ID as key. / 問題IDをキーに成績を参照できる配列を作成
 		$question_records = [];
 		if ($is_record) {
 			foreach ($record->records_questions as $rec) {

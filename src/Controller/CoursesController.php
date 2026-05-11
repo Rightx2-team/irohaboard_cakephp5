@@ -23,7 +23,7 @@ class CoursesController extends AppController
 
         if ($this->request->is('post')) {
             $course = $coursesTable->patchEntity($course, $this->request->getData());
-            // 作成者IDをセット
+            // Set creator ID / 作成者IDをセット
             $identity = $this->Authentication->getIdentity();
             if ($identity) {
                 $course->user_id = $identity->getIdentifier();

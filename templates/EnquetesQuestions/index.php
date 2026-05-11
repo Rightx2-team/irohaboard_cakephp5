@@ -1,6 +1,6 @@
 <?php $this->start('css-embedded'); ?>
 <style type='text/css'>
-	<?php if($is_admin_record) { // 管理者による学習履歴表示モードの場合、ロゴのリンクを無効化 ?>
+	<?php if($is_admin_record) { // In admin study history display mode, disable the logo link. / 管理者による学習履歴表示モードの場合、ロゴのリンクを無効化 ?>
 	.ib-navi-item
 	{
 		display: none;
@@ -16,7 +16,7 @@
 
 <?php $this->start('script-embedded'); ?>
 <script>
-	var IS_RECORD		= '<?= $is_record ?>';										// テスト結果表示フラグ
+	var IS_RECORD		= '<?= $is_record ?>';										// Test result display flag. / テスト結果表示フラグ
 
 </script>
 <?= $this->Html->script('contents_enquetes.js?20250201');?>
@@ -24,7 +24,7 @@
 <div class="contents-questions-index">
 	<div class="breadcrumb">
 	<?php
-	// 管理者による学習履歴表示モードの場合、コース一覧リンクを表示しない
+	// In admin study history display mode, do not show the course list link. / 管理者による学習履歴表示モードの場合、コース一覧リンクを表示しない
 	if($is_admin_record)
 	{
 		$course_url = ['controller' => 'contents', 'action' => 'record', $record['Course']['id'], $record['Record']['user_id']];
@@ -36,7 +36,7 @@
 	}
 	
 	
-	 // addCrumb 内でエスケープされない為、別途エスケープ
+	 // Escape separately since it is not escaped inside addCrumb. / addCrumb 内でエスケープされない為、別途エスケープ
 	
 	?>
 	</div>
@@ -44,9 +44,9 @@
 	
 	<!-- 問題一覧 -->
 	<?php
-		$question_index = 1; // 設問番号
-		
-		// 問題IDをキーに問題の成績が参照できる配列を作成
+		$question_index = 1; // Question number. / 設問番号
+
+		// Create an array that can reference question results by question ID as key. / 問題IDをキーに問題の成績が参照できる配列を作成
 		$question_records = [];
 		
 		if($is_record)
@@ -61,24 +61,24 @@
 	?>
 		<?php foreach ($contentsQuestions as $contentsQuestion): ?>
 			<?php
-			$question		= $contentsQuestion['ContentsQuestion'];	// 問題情報
-			$title			= $question['title'];						// 問題のタイトル
-			$body			= $question['body'];						// 問題文
-			$question_id	= $question['id'];							// 問題ID
-			
+			$question		= $contentsQuestion['ContentsQuestion'];	// Question data. / 問題情報
+			$title			= $question['title'];						// Question title. / 問題のタイトル
+			$body			= $question['body'];						// Question body. / 問題文
+			$question_id	= $question['id'];							// Question ID. / 問題ID
+
 			//------------------------------//
-			//	選択肢用の出力タグの生成	//
+			// Generate output tag for options. / 選択肢用の出力タグの生成 //
 			//------------------------------//
-			$option_tag		= '';										// 選択肢用の出力タグ
-			$option_index	= 1;										// 選択肢番号
-			$option_list	= explode('|', $question['options']);		// 選択肢リスト
-			$answer_list	= [];										// 選択した解答リスト
-			
-			// 解答済みの場合、解答リストを作成
+			$option_tag		= '';										// Output tag for options. / 選択肢用の出力タグ
+			$option_index	= 1;										// Option number. / 選択肢番号
+			$option_list	= explode('|', $question['options']);		// Option list. / 選択肢リスト
+			$answer_list	= [];										// Selected answer list. / 選択した解答リスト
+
+			// If already answered, create the answer list. / 解答済みの場合、解答リストを作成
 			if(isset($question_records[$question_id]))
 				$answer_list = explode(',', $question_records[$question_id]['answer']);
 			
-			$question_type	= $contentsQuestion['ContentsQuestion']['question_type']; // 問題形式
+			$question_type	= $contentsQuestion['ContentsQuestion']['question_type']; // Question format. / 問題形式
 			
 			switch($question_type)
 			{
@@ -90,14 +90,14 @@
 					{
 						$is_checked = '';
 				
-						// テスト結果履歴モードの場合、ラジオボタンを無効化
+						// In test result history mode, disable radio buttons. / テスト結果履歴モードの場合、ラジオボタンを無効化
 						$is_disabled = $is_record ? 'disabled' : '';
-						
-						// 解答リストがある場合
+
+						// If there is an answer list. / 解答リストがある場合
 						if(count($answer_list) > 0)
 							$is_checked = ($answer_list[0] == $option_index) ? 'checked' : '';
 
-						// 選択肢ラジオボタン
+						// Option radio button. / 選択肢ラジオボタン
 						$option_tag .= sprintf('<input type="radio" value="%s" name="data[answer_%s]" %s %s> %s<br>',
 								$option_index, $question_id, $is_checked, $is_disabled, h($option));
 						
@@ -128,7 +128,7 @@
 		<?php
 			echo '<div class="form-inline"><!--start-->';
 			
-			// テスト実施の場合のみ、採点ボタンを表示
+			// Show the scoring button only when the test is being taken. / テスト実施の場合のみ、採点ボタンを表示
 			if (!$is_record)
 			{
 				echo $this->Form->hidden('study_sec');

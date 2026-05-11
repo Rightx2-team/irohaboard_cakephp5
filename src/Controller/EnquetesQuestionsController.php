@@ -15,7 +15,8 @@ namespace App\Controller;
 use Cake\Http\Exception\NotFoundException;
 
 /**
- * アンケートコントローラ
+ * Survey controller / アンケートコントローラ
+ * Nearly the same structure as ContentsQuestionsController; differs in that answers are saved without grading. /
  * ContentsQuestionsController とほぼ同構成。採点なしで保存する点が異なる。
  */
 class EnquetesQuestionsController extends AppController

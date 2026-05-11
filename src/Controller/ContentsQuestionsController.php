@@ -17,13 +17,13 @@ use Cake\Http\Exception\NotFoundException;
 class ContentsQuestionsController extends AppController
 {
     /**
-     * 問題を出題 / テスト採点
+     * Present questions / grade test / 問題を出題 / テスト採点
      */
     public function index(int $content_id, ?int $record_id = null): void
     {
         $content = $this->fetchTable('Contents')->get($content_id, ['contain' => ['Courses']]);
 
-        // 権限チェック
+        // Permission check / 権限チェック
         if (!$this->isAdminPage()) {
             if (!$this->fetchTable('Courses')->hasRight($this->readAuthUser('id'), $content->course_id)) {
                 throw new NotFoundException(__('Invalid access'));
@@ -39,7 +39,7 @@ class ContentsQuestionsController extends AppController
         $record    = null;
 
         if ($record_id !== null) {
-            // テスト結果表示モード
+            // Test result display mode / テスト結果表示モード
             $record = $records->get($record_id, ['contain' => ['RecordsQuestions']]);
 
             if (!$this->isAdminPage() && $this->isRecordPage() && $record->user_id != $this->readAuthUser('id')) {
@@ -57,7 +57,7 @@ class ContentsQuestionsController extends AppController
                 ->all();
 
         } elseif ($this->readSession('Iroha.RondomQuestions.' . $content_id . '.id_list') !== '') {
-            // セッションにランダム出題情報あり
+            // Random question info exists in session / セッションにランダム出題情報あり
             $question_id_list  = $this->readSession('Iroha.RondomQuestions.' . $content_id . '.id_list');
             $contentsQuestions = $questions->find()
                 ->where(['content_id' => $content_id, 'id IN' => $question_id_list])
@@ -65,7 +65,7 @@ class ContentsQuestionsController extends AppController
                 ->all();
 
         } elseif ($content->question_count > 0) {
-            // ランダム出題
+            // Random question presentation / ランダム出題
             $contentsQuestions = $questions->find()
                 ->where(['content_id' => $content_id])
                 ->limit($content->question_count)
@@ -79,14 +79,14 @@ class ContentsQuestionsController extends AppController
             $this->writeSession('Iroha.RondomQuestions.' . $content_id . '.id_list', $question_id_list);
 
         } else {
-            // 通常出題
+            // Standard question presentation / 通常出題
             $contentsQuestions = $questions->find()
                 ->where(['content_id' => $content_id])
                 ->orderByAsc('sort_no')
                 ->all();
         }
 
-        // 採点処理
+        // Grading process / 採点処理
         if ($this->request->is('post')) {
             $details    = [];
             $full_score = 0;

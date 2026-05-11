@@ -53,9 +53,9 @@ class ContentsQuestionsTable extends AppTable
     }
 
     /**
-     * 問題の並べ替え
+     * Reorder questions. / 問題の並べ替え
      *
-     * @param array $id_list 問題のIDリスト（並び順）
+     * @param array $id_list List of question IDs in sort order. / 問題のIDリスト（並び順）
      */
     public function setOrder(array $id_list): void
     {
@@ -66,10 +66,10 @@ class ContentsQuestionsTable extends AppTable
     }
 
     /**
-     * 新規追加時の問題のソート番号を取得
+     * Get the sort number for a new question. / 新規追加時の問題のソート番号を取得
      *
-     * @param int $content_id コンテンツ(テスト)のID
-     * @return int ソート番号
+     * @param int $content_id ID of the content (test). / コンテンツ(テスト)のID
+     * @return int Sort number. / ソート番号
      */
     public function getNextSortNo(int $content_id): int
     {

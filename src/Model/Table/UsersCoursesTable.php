@@ -37,10 +37,10 @@ class UsersCoursesTable extends AppTable
     }
 
     /**
-     * 学習履歴付き受講コース一覧を取得
+     * Get the list of enrolled courses with study history. / 学習履歴付き受講コース一覧を取得
      *
-     * @param int $user_id ユーザのID
-     * @return array 受講コース一覧
+     * @param int $user_id User ID. / ユーザのID
+     * @return array List of enrolled courses. / 受講コース一覧
      */
     public function getCourseRecord(int $user_id): array
     {

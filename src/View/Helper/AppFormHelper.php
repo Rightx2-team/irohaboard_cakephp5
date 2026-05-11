@@ -16,19 +16,19 @@ use Cake\View\Helper\FormHelper;
 
 /**
  * AppFormHelper
- * CakePHP2の AppFormHelper / AppHelper を統合したカスタムFormHelper。
- * CakePHP5ではBootstrapのCSSクラスは直接HTMLに書くのが推奨だが、
- * 既存テンプレートとの互換性のためメソッドを残す。
+ * Custom FormHelper integrating AppFormHelper / AppHelper from CakePHP2. / CakePHP2の AppFormHelper / AppHelper を統合したカスタムFormHelper。
+ * In CakePHP5, it is recommended to write Bootstrap CSS classes directly in HTML, / CakePHP5ではBootstrapのCSSクラスは直接HTMLに書くのが推奨だが、
+ * but methods are kept for compatibility with existing templates. / 既存テンプレートとの互換性のためメソッドを残す。
  */
 class AppFormHelper extends FormHelper
 {
     /**
-     * 説明付きテキストボックスを出力
-     * CakePHP2の AppHelper::inputExp() に相当
+     * Output a text box with description. / 説明付きテキストボックスを出力
+     * Equivalent to AppHelper::inputExp() in CakePHP2. / CakePHP2の AppHelper::inputExp() に相当
      *
-     * @param string $fieldName フィールド名
-     * @param array  $options   input オプション
-     * @param string $exp       説明テキスト
+     * @param string $fieldName Field name. / フィールド名
+     * @param array  $options   Input options. / input オプション
+     * @param string $exp       Description text. / 説明テキスト
      * @return string HTML
      */
     public function inputExp(string $fieldName, array $options = [], string $exp = ''): string
@@ -43,12 +43,12 @@ class AppFormHelper extends FormHelper
     }
 
     /**
-     * ラジオボタンを出力
-     * CakePHP2の AppHelper::inputRadio() に相当
+     * Output radio buttons. / ラジオボタンを出力
+     * Equivalent to AppHelper::inputRadio() in CakePHP2. / CakePHP2の AppHelper::inputRadio() に相当
      *
-     * @param string $fieldName フィールド名
-     * @param array  $options   オプション
-     * @param string $exp       説明テキスト
+     * @param string $fieldName Field name. / フィールド名
+     * @param array  $options   Options. / オプション
+     * @param string $exp       Description text. / 説明テキスト
      * @return string HTML
      */
     public function inputRadio(string $fieldName, array $options = [], string $exp = ''): string
@@ -66,11 +66,11 @@ class AppFormHelper extends FormHelper
     }
 
     /**
-     * 検索フィールドを出力
-     * CakePHP2の AppHelper::searchField() に相当
+     * Output a search field. / 検索フィールドを出力
+     * Equivalent to AppHelper::searchField() in CakePHP2. / CakePHP2の AppHelper::searchField() に相当
      *
-     * @param string $fieldName フィールド名
-     * @param array  $options   追加オプション
+     * @param string $fieldName Field name. / フィールド名
+     * @param array  $options   Additional options. / 追加オプション
      * @return string HTML
      */
     public function searchField(string $fieldName, array $options = []): string
@@ -85,11 +85,11 @@ class AppFormHelper extends FormHelper
     }
 
     /**
-     * 検索用日付フィールドを出力
-     * CakePHP2の AppHelper::searchDate() に相当
+     * Output a date field for search. / 検索用日付フィールドを出力
+     * Equivalent to AppHelper::searchDate() in CakePHP2. / CakePHP2の AppHelper::searchDate() に相当
      *
-     * @param string $fieldName フィールド名
-     * @param array  $options   追加オプション
+     * @param string $fieldName Field name. / フィールド名
+     * @param array  $options   Additional options. / 追加オプション
      * @return string HTML
      */
     public function searchDate(string $fieldName, array $options = []): string
@@ -109,13 +109,13 @@ class AppFormHelper extends FormHelper
     }
 
     /**
-     * 説明ブロックを出力（静的）
-     * CakePHP2の AppHelper::block() に相当
+     * Output a description block (static). / 説明ブロックを出力（静的）
+     * Equivalent to AppHelper::block() in CakePHP2. / CakePHP2の AppHelper::block() に相当
      *
-     * @param string $label       ラベル
-     * @param string $content     内容
-     * @param bool   $is_bold     太字にするか
-     * @param string $block_class 追加CSSクラス
+     * @param string $label       Label. / ラベル
+     * @param string $content     Content. / 内容
+     * @param bool   $is_bold     Whether to bold. / 太字にするか
+     * @param string $block_class Additional CSS class. / 追加CSSクラス
      * @return string HTML
      */
     public static function block(string $label, string $content, bool $is_bold = false, string $block_class = ''): string

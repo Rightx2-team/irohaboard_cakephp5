@@ -5,10 +5,10 @@ use Cake\Routing\RouteBuilder;
 return static function (RouteBuilder $routes): void {
     $routes->setRouteClass(DashedRoute::class);
 
-    // ===== 管理画面 /admin/* を App\Controller\Xxx::adminYyy にマッピング =====
-    // プレフィックスを使わず、URLベースでマッピング
+    // ===== Map admin screen /admin/* to App\Controller\Xxx::adminYyy / 管理画面 /admin/* を App\Controller\Xxx::adminYyy にマッピング =====
+    // URL-based mapping without using prefixes / プレフィックスを使わず、URLベースでマッピング
 
-    // Users（管理）- /admin/users を先に定義してページャの逆引きURLを正しく生成させる
+    // Users (admin) - define /admin/users first to correctly generate paginator reverse URLs / Users（管理）- /admin/users を先に定義してページャの逆引きURLを正しく生成させる
     $routes->connect('/admin/users',               ['controller' => 'Users', 'action' => 'adminIndex']);
     $routes->connect('/admin',                     ['controller' => 'Users', 'action' => 'adminIndex']);
     $routes->connect('/admin/',                    ['controller' => 'Users', 'action' => 'adminIndex']);
@@ -35,7 +35,7 @@ return static function (RouteBuilder $routes): void {
     $routes->connect('/admin/courses/delete/{id}', ['controller' => 'Courses', 'action' => 'adminDelete'], ['pass' => ['id']]);
     $routes->connect('/admin/courses/order',       ['controller' => 'Courses', 'action' => 'adminOrder']);
 
-    // Contents / アップロード（動的ルートより前に配置）
+    // Contents / Upload (placed before dynamic routes) / Contents / アップロード（動的ルートより前に配置）
     $routes->connect('/admin/contents/upload/{file_type}',            ['controller' => 'Contents', 'action' => 'adminUpload'],  ['pass' => ['file_type']]);
     $routes->connect('/admin/contents/upload_image',                  ['controller' => 'Contents', 'action' => 'adminUploadImage']);
     $routes->connect('/contents/file_download/{content_id}',          ['controller' => 'Contents', 'action' => 'fileDownload'], ['pass' => ['content_id']]);
@@ -60,14 +60,14 @@ return static function (RouteBuilder $routes): void {
     // Settings
     $routes->connect('/admin/settings', ['controller' => 'Settings', 'action' => 'adminIndex']);
 
-    // ===== 受講者画面 =====
+    // ===== Learner screen / 受講者画面 =====
     $routes->connect('/', ['controller' => 'UsersCourses', 'action' => 'index']);
     $routes->connect('/users/login',   ['controller' => 'Users', 'action' => 'login']);
     $routes->connect('/users/logout',  ['controller' => 'Users', 'action' => 'logout']);
     $routes->connect('/users/setting', ['controller' => 'Users', 'action' => 'setting']);
     $routes->connect('/users_courses', ['controller' => 'UsersCourses', 'action' => 'index']);
 
-    // ContentsQuestions (テスト)
+    // ContentsQuestions (test / テスト)
     $routes->connect('/contents_questions/{content_id}',                          ['controller' => 'ContentsQuestions', 'action' => 'index'],       ['pass' => ['content_id']]);
     $routes->connect('/contents_questions/{content_id}/{record_id}',              ['controller' => 'ContentsQuestions', 'action' => 'index'],       ['pass' => ['content_id', 'record_id']]);
     $routes->connect('/admin/contents_questions/{content_id}',                    ['controller' => 'ContentsQuestions', 'action' => 'adminIndex'],  ['pass' => ['content_id']]);
@@ -78,7 +78,7 @@ return static function (RouteBuilder $routes): void {
     $routes->connect('/admin/contents_questions/order',                           ['controller' => 'ContentsQuestions', 'action' => 'adminOrder']);
     $routes->connect('/admin/contents_questions/record/{content_id}/{record_id}', ['controller' => 'ContentsQuestions', 'action' => 'adminRecord'], ['pass' => ['content_id', 'record_id']]);
 
-    // EnquetesQuestions (アンケート)
+    // EnquetesQuestions (survey / アンケート)
     $routes->connect('/enquetes_questions/{content_id}',                          ['controller' => 'EnquetesQuestions', 'action' => 'index'],       ['pass' => ['content_id']]);
     $routes->connect('/enquetes_questions/{content_id}/{record_id}',              ['controller' => 'EnquetesQuestions', 'action' => 'index'],       ['pass' => ['content_id', 'record_id']]);
     $routes->connect('/admin/enquetes_questions/{content_id}',                    ['controller' => 'EnquetesQuestions', 'action' => 'adminIndex'],  ['pass' => ['content_id']]);
@@ -88,10 +88,10 @@ return static function (RouteBuilder $routes): void {
     $routes->connect('/admin/enquetes_questions/delete/{question_id}',            ['controller' => 'EnquetesQuestions', 'action' => 'adminDelete'], ['pass' => ['question_id']]);
     $routes->connect('/admin/enquetes_questions/order',                           ['controller' => 'EnquetesQuestions', 'action' => 'adminOrder']);
 
-    // Records (採点結果保存)
+    // Records (save grading results / 採点結果保存)
     $routes->connect('/records/add/{content_id}', ['controller' => 'Records', 'action' => 'add'], ['pass' => ['content_id']]);
 
-    // 言語切替
+    // Language switch / 言語切替
     $routes->connect('/language/{lang}', ['controller' => 'Language', 'action' => 'switch'], ['pass' => ['lang']]);
 
     // Install / Update
@@ -100,7 +100,7 @@ return static function (RouteBuilder $routes): void {
     $routes->connect('/install/error',    ['controller' => 'Install', 'action' => 'error']);
     $routes->connect('/update',           ['controller' => 'Update',  'action' => 'index']);
 
-    // Contents / 学習履歴詳細（管理者ポップアップ）
+    // Contents / study history details (admin popup) / Contents / 学習履歴詳細（管理者ポップアップ）
     $routes->connect('/admin/contents/record/{course_id}/{user_id}', ['controller' => 'Contents', 'action' => 'adminRecord'], ['pass' => ['course_id', 'user_id']]);
 
     $routes->fallbacks(DashedRoute::class);

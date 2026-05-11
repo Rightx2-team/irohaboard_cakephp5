@@ -13,17 +13,17 @@ use Cake\Database\Connection;
 
 /**
  * Application table for CakePHP5.
- * 全Tableクラスの基底クラス。
- * CakePHP2のAppModelに相当。
+ * Base class for all Table classes. / 全Tableクラスの基底クラス。
+ * Equivalent to AppModel in CakePHP2. / CakePHP2のAppModelに相当。
  */
 class AppTable extends Table
 {
     /**
-     * 英数字チェック（マルチバイト対応）
-     * CakePHP2の alphaNumericMB バリデーションメソッドに相当。
-     * CakePHP5ではバリデーションルールとして登録して使用する。
+     * Alphanumeric check (multibyte compatible). / 英数字チェック（マルチバイト対応）
+     * Equivalent to the alphaNumericMB validation method in CakePHP2. / CakePHP2の alphaNumericMB バリデーションメソッドに相当。
+     * In CakePHP5, register and use as a validation rule. / CakePHP5ではバリデーションルールとして登録して使用する。
      *
-     * @param mixed $value チェック対象
+     * @param mixed $value Value to check. / チェック対象
      * @return bool OK:true, NG:false
      */
     public function alphaNumericMB($value): bool
@@ -32,13 +32,13 @@ class AppTable extends Table
     }
 
     /**
-     * 生SQLを実行し、結果を配列で返す
-     * CakePHP2の queryList() に相当。
+     * Execute raw SQL and return results as an array. / 生SQLを実行し、結果を配列で返す
+     * Equivalent to queryList() in CakePHP2. / CakePHP2の queryList() に相当。
      *
-     * @param string $sql         SQL文
-     * @param array  $params      バインドパラメータ
-     * @param string $field_name  取得するフィールド名
-     * @return array フィールド値のリスト
+     * @param string $sql         SQL statement. / SQL文
+     * @param array  $params      Bind parameters. / バインドパラメータ
+     * @param string $field_name  Field name to retrieve. / 取得するフィールド名
+     * @return array List of field values. / フィールド値のリスト
      */
     public function queryList(string $sql, array $params, string $field_name): array
     {
@@ -56,11 +56,11 @@ class AppTable extends Table
     }
 
     /**
-     * 生SQLを実行し、全行を連想配列で返す
+     * Execute raw SQL and return all rows as an associative array. / 生SQLを実行し、全行を連想配列で返す
      *
-     * @param string $sql    SQL文
-     * @param array  $params バインドパラメータ
-     * @return array 結果行の配列
+     * @param string $sql    SQL statement. / SQL文
+     * @param array  $params Bind parameters. / バインドパラメータ
+     * @return array Array of result rows. / 結果行の配列
      */
     public function rawQuery(string $sql, array $params = []): array
     {

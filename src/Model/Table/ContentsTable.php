@@ -25,7 +25,7 @@ class ContentsTable extends AppTable
         $this->addBehavior('Timestamp');
         $this->setPrimaryKey('id');
 
-        // アソシエーション（CakePHP2の $belongsTo に相当）
+        // Associations (equivalent to $belongsTo in CakePHP2). / アソシエーション（CakePHP2の $belongsTo に相当）
         $this->belongsTo('Courses', [
             'foreignKey' => 'course_id',
         ]);
@@ -35,7 +35,7 @@ class ContentsTable extends AppTable
     }
 
     /**
-     * バリデーションルール（CakePHP2の $validate に相当）
+     * Validation rules (equivalent to $validate in CakePHP2). / バリデーションルール（CakePHP2の $validate に相当）
      */
     public function validationDefault(Validator $validator): Validator
     {
@@ -87,12 +87,12 @@ class ContentsTable extends AppTable
     }
 
     /**
-     * 学習履歴付きコンテンツ一覧を取得
+     * Get content list with study history. / 学習履歴付きコンテンツ一覧を取得
      *
-     * @param int    $user_id   取得対象のユーザID
-     * @param int    $course_id 取得対象のコースID
-     * @param string $role      取得者の権限（admin の場合、非公開コンテンツも取得）
-     * @return array 学習履歴付きコンテンツ一覧
+     * @param int    $user_id   Target user ID. / 取得対象のユーザID
+     * @param int    $course_id Target course ID. / 取得対象のコースID
+     * @param string $role      Role of the accessor (if admin, also retrieves unpublished content). / 取得者の権限（admin の場合、非公開コンテンツも取得）
+     * @return array Content list with study history. / 学習履歴付きコンテンツ一覧
      */
     public function getContentRecord(int $user_id, int $course_id, string $role = 'user'): array
     {
@@ -150,9 +150,9 @@ EOF;
     }
 
     /**
-     * コンテンツの並べ替え
+     * Reorder contents. / コンテンツの並べ替え
      *
-     * @param array $id_list コンテンツのIDリスト（並び順）
+     * @param array $id_list List of content IDs in sort order. / コンテンツのIDリスト（並び順）
      */
     public function setOrder(array $id_list): void
     {
@@ -163,10 +163,10 @@ EOF;
     }
 
     /**
-     * 新規追加時のコンテンツのソート番号を取得
+     * Get the sort number for a new content item. / 新規追加時のコンテンツのソート番号を取得
      *
-     * @param int $course_id コースID
-     * @return int ソート番号
+     * @param int $course_id Course ID. / コースID
+     * @return int Sort number. / ソート番号
      */
     public function getNextSortNo(int $course_id): int
     {

@@ -13,7 +13,7 @@ class RecordsController extends AppController
     {
         $recordsTable = $this->fetchTable('Records');
 
-        // 検索条件
+        // Search conditions / 検索条件
         $conditions = [];
 
         $course_id        = $this->request->getQuery('course_id', '');
@@ -41,14 +41,14 @@ class RecordsController extends AppController
             $conditions['Contents.kind'] = $content_category;
         }
 
-        // 日付範囲の安全な取得
+        // Safely retrieve date range / 日付範囲の安全な取得
         $from_date = $this->resolveDate($this->request->getQuery('from_date'), date('Y-m-d', strtotime('-1 month')));
         $to_date   = $this->resolveDate($this->request->getQuery('to_date'),   date('Y-m-d'));
 
         $conditions['Records.created >='] = $from_date . ' 00:00:00';
         $conditions['Records.created <='] = $to_date . ' 23:59:59';
 
-        // 通常の一覧表示
+        // Standard list display / 通常の一覧表示
         $query = $recordsTable->find()
             ->contain(['Users', 'Courses', 'Contents'])
             ->where($conditions)
@@ -64,7 +64,7 @@ class RecordsController extends AppController
     }
 
     /**
-     * クエリパラメータを日付文字列に解決する
+     * Resolve a query parameter to a date string / クエリパラメータを日付文字列に解決する
      */
     private function resolveDate($raw, string $default): string
     {
@@ -79,9 +79,9 @@ class RecordsController extends AppController
     }
 
     /**
-     * 学習履歴を追加（受講者がコンテンツ学習後に呼び出される）
+     * Add study history (called after a learner completes content) / 学習履歴を追加（受講者がコンテンツ学習後に呼び出される）
      *
-     * @param int $content_id コンテンツID
+     * @param int $content_id Content ID / コンテンツID
      */
     public function add(int $content_id): ?Response
     {
@@ -115,7 +115,7 @@ class RecordsController extends AppController
         ]);
 
         if ($recordsTable->save($record)) {
-            // Ajaxの場合は OK だけ返す。フォームPOSTの場合はリダイレクト
+            // Return only OK for Ajax; redirect for form POST / Ajaxの場合は OK だけ返す。フォームPOSTの場合はリダイレクト
             if ($this->request->is('ajax')) {
                 return $this->response->withType('text/plain')->withStringBody('OK');
             }

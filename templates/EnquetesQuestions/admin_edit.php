@@ -95,11 +95,11 @@
 
 	function init()
 	{
-		// リッチテキストエディタを起動
+		// Launch the rich text editor. / リッチテキストエディタを起動
 		CommonUtil.setRichTextEditor('#ContentsQuestionBody', <?= \Cake\Core\Configure::read('upload_image_maxsize') ?>, '<?= $this->Url->build('/') ?>');
 		CommonUtil.setRichTextEditor('#ContentsQuestionExplain', <?= \Cake\Core\Configure::read('upload_image_maxsize') ?>, '<?= $this->Url->build('/') ?>');
-		
-		// 保存時、コード表示モードの場合、解除する（編集中の内容を反映するため）
+
+		// When saving, if in code view mode, deactivate it (to reflect the content being edited). / 保存時、コード表示モードの場合、解除する（編集中の内容を反映するため）
 		$("form").submit( function() {
 			if ($('#ContentsQuestionExplain').summernote('codeview.isActivated')) {
 				$('#ContentsQuestionExplain').summernote('codeview.deactivate')

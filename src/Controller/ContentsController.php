@@ -10,7 +10,7 @@ use Cake\Http\Response;
 class ContentsController extends AppController
 {
     /**
-     * 管理: コンテンツ一覧
+     * Admin: content list / 管理: コンテンツ一覧
      */
     public function adminIndex(int $course_id): void
     {
@@ -23,7 +23,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理: コンテンツ追加
+     * Admin: add content / 管理: コンテンツ追加
      */
     public function adminAdd(int $course_id): ?Response
     {
@@ -61,7 +61,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理: コンテンツ編集
+     * Admin: edit content / 管理: コンテンツ編集
      */
     public function adminEdit(int $course_id, ?int $content_id = null): ?Response
     {
@@ -91,7 +91,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理: コンテンツ削除
+     * Admin: delete content / 管理: コンテンツ削除
      */
     public function adminDelete(int $content_id): ?Response
     {
@@ -119,7 +119,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理: コンテンツ並び替え (Ajax)
+     * Admin: reorder contents (Ajax) / 管理: コンテンツ並び替え (Ajax)
      */
     public function adminOrder(): ?Response
     {
@@ -143,7 +143,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 受講者: コンテンツ一覧（コース内）
+     * Learner: content list within a course / 受講者: コンテンツ一覧（コース内）
      */
     public function index(int $course_id, ?int $user_id = null): void
     {
@@ -154,7 +154,7 @@ class ContentsController extends AppController
 
         $coursesTable = $this->fetchTable('Courses');
         if (!method_exists($coursesTable, 'hasRight') || !$coursesTable->hasRight($authUserId, $course_id)) {
-            // 権限チェックを簡略化
+            // Simplified permission check / 権限チェックを簡略化
         }
 
         $contentsTable = $this->fetchTable('Contents');
@@ -171,7 +171,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理: ファイルアップロード
+     * Admin: file upload / 管理: ファイルアップロード
      * @param string $file_type 'file' | 'image' | 'movie'
      */
     public function adminUpload(string $file_type): void
@@ -254,7 +254,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理: 画像アップロード (summernote用 Ajax)
+     * Admin: image upload (Ajax for summernote) / 管理: 画像アップロード (summernote用 Ajax)
      */
     public function adminUploadImage(): ?Response
     {
@@ -301,7 +301,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * ファイルのダウンロード
+     * File download / ファイルのダウンロード
      */
     public function fileDownload(int $content_id): Response
     {
@@ -329,7 +329,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 動画ファイルの表示
+     * Display video file / 動画ファイルの表示
      */
     public function fileMovie(int $content_id): Response
     {
@@ -356,7 +356,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 画像ファイルの表示
+     * Display image file / 画像ファイルの表示
      */
     public function fileImage(string $file_name): Response
     {
@@ -382,7 +382,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 管理者: 受講者の学習履歴詳細表示
+     * Admin: display learner's study history details / 管理者: 受講者の学習履歴詳細表示
      */
     public function adminRecord(int $course_id, int $user_id): void
     {
@@ -405,7 +405,7 @@ class ContentsController extends AppController
     }
 
     /**
-     * 受講者: コンテンツ表示
+     * Learner: display content / 受講者: コンテンツ表示
      */
     public function view(int $content_id): void
     {

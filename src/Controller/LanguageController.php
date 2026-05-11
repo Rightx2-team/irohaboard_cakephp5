@@ -21,7 +21,7 @@ class LanguageController extends AppController
         }
         $this->request->getSession()->write('Config.language', $lang);
 
-        // return パラメータがあればそのページへ、なければホームへ
+        // If a return parameter is given, redirect there; otherwise go home / return パラメータがあればそのページへ、なければホームへ
         $returnUrl = $this->request->getQuery('return');
         if ($returnUrl && str_starts_with($returnUrl, '/') && !str_starts_with($returnUrl, '//')) {
             return $this->redirect($returnUrl);

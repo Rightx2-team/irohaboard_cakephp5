@@ -15,11 +15,11 @@ class SettingsController extends AppController
                 return;
             }
 
-            // フォームから送られたデータを取得
-            // フラットな構造で来る（['title' => ..., 'copyright' => ...]）
+            // Retrieve data sent from the form / フォームから送られたデータを取得
+            // Comes as a flat structure (['title' => ..., 'copyright' => ...]) / フラットな構造で来る（['title' => ..., 'copyright' => ...]）
             $postData = $this->request->getData();
 
-            // 除外するキー（Formヘルパーが自動で付けるフィールド）
+            // Keys to exclude (fields automatically added by the Form helper) / 除外するキー（Formヘルパーが自動で付けるフィールド）
             $excludeKeys = ['_Token', '_csrfToken'];
             $settingData = [];
             foreach ($postData as $key => $value) {

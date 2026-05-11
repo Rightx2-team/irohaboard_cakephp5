@@ -17,8 +17,8 @@ use Cake\ORM\Entity;
 class UsersCourse extends Entity
 {
     /**
-     * 一括代入を許可するフィールド
-     * CakePHP5では明示的に指定が必要
+     * Fields allowed for mass assignment. / 一括代入を許可するフィールド
+     * Must be explicitly specified in CakePHP5. / CakePHP5では明示的に指定が必要
      */
     protected array $_accessible = [
         '*' => true,

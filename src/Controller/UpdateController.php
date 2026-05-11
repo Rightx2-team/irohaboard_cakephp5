@@ -28,7 +28,7 @@ class UpdateController extends AppController
 
     public function beforeFilter(EventInterface $event): void
     {
-        // 意図的に親のbeforeFilterをスキップ
+        // Intentionally skip parent beforeFilter / 意図的に親のbeforeFilterをスキップ
     }
 
     public function index(): void

@@ -16,7 +16,7 @@
             <tbody>
             <?php foreach ($infos as $info_item): ?>
             <?php
-                // エンティティ/配列の両対応
+                // Compatible with both entity and array formats. / エンティティ/配列の両対応
                 $created = is_array($info_item) ? ($info_item['created'] ?? '') : ($info_item->created ?? '');
                 $title   = is_array($info_item) ? ($info_item['title']   ?? '') : ($info_item->title   ?? '');
                 $id      = is_array($info_item) ? ($info_item['id']      ?? 0)  : ($info_item->id      ?? 0);
@@ -44,7 +44,7 @@
             <ul class="list-group">
             <?php foreach ($courses as $course): ?>
             <?php
-                // rawQuery で返される配列形式に対応
+                // Compatible with the array format returned by rawQuery. / rawQuery で返される配列形式に対応
                 $course_id    = is_array($course) ? ($course['id']    ?? 0)  : ($course->id    ?? 0);
                 $course_title = is_array($course) ? ($course['title'] ?? '') : ($course->title ?? '');
                 $left_cnt     = is_array($course) ? ($course['left_cnt']   ?? null) : ($course->left_cnt   ?? null);

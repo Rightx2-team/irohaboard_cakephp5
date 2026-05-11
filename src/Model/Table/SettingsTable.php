@@ -34,9 +34,9 @@ class SettingsTable extends AppTable
     }
 
     /**
-     * システム設定の値のリストを取得
+     * Get the list of system setting values. / システム設定の値のリストを取得
      *
-     * @return array 設定値リスト（連想配列）
+     * @return array List of setting values (associative array). / 設定値リスト（連想配列）
      */
     public function getSettings(): array
     {
@@ -51,9 +51,9 @@ class SettingsTable extends AppTable
     }
 
     /**
-     * システム設定を保存
+     * Save system settings. / システム設定を保存
      *
-     * @param array $settings 保存する設定値リスト（連想配列）
+     * @param array $settings List of setting values to save (associative array). / 保存する設定値リスト（連想配列）
      */
     public function setSettings(array $settings): void
     {

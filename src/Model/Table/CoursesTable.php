@@ -56,9 +56,9 @@ class CoursesTable extends AppTable
     }
 
     /**
-     * デフォルトのソート順を適用するFinder
-     * CakePHP2の $order = "Course.sort_no" に相当。
-     * 使用例: $this->Courses->find('sorted')
+     * Finder that applies the default sort order. / デフォルトのソート順を適用するFinder
+     * Equivalent to $order = "Course.sort_no" in CakePHP2. / CakePHP2の $order = "Course.sort_no" に相当。
+     * Usage example: $this->Courses->find('sorted') / 使用例: $this->Courses->find('sorted')
      */
     public function findSorted(SelectQuery $query): SelectQuery
     {
@@ -66,9 +66,9 @@ class CoursesTable extends AppTable
     }
 
     /**
-     * コースの並べ替え
+     * Reorder courses. / コースの並べ替え
      *
-     * @param array $id_list コースのIDリスト（並び順）
+     * @param array $id_list List of course IDs in sort order. / コースのIDリスト（並び順）
      */
     public function setOrder(array $id_list): void
     {
@@ -79,17 +79,17 @@ class CoursesTable extends AppTable
     }
 
     /**
-     * コースへのアクセス権限チェック
+     * Check access permission to a course. / コースへのアクセス権限チェック
      *
-     * @param int $user_id   アクセス者のユーザID
-     * @param int $course_id アクセス先のコースのID
-     * @return bool true: アクセス可能, false: アクセス不可
+     * @param int $user_id   User ID of the accessor. / アクセス者のユーザID
+     * @param int $course_id ID of the target course. / アクセス先のコースのID
+     * @return bool true: accessible, false: not accessible. / true: アクセス可能, false: アクセス不可
      */
     public function hasRight(int $user_id, int $course_id): bool
     {
         $conn = $this->getConnection();
 
-        // ユーザーに直接割り当てられたコースを確認
+        // Check courses directly assigned to the user. / ユーザーに直接割り当てられたコースを確認
         $stmt = $conn->execute(
             'SELECT COUNT(*) as cnt FROM ib_users_courses WHERE user_id = ? AND course_id = ?',
             [$user_id, $course_id]
@@ -99,7 +99,7 @@ class CoursesTable extends AppTable
             return true;
         }
 
-        // グループ経由のアクセス権を確認
+        // Check access permission via group. / グループ経由のアクセス権を確認
         $stmt = $conn->execute(
             'SELECT COUNT(*) as cnt FROM ib_groups_courses gc'
             . ' INNER JOIN ib_users_groups ug ON gc.group_id = ug.group_id AND ug.user_id = ?'
@@ -112,9 +112,9 @@ class CoursesTable extends AppTable
     }
 
     /**
-     * コースの削除（関連レコードも含めて削除）
+     * Delete a course (including related records). / コースの削除（関連レコードも含めて削除）
      *
-     * @param int $course_id 削除するコースのID
+     * @param int $course_id ID of the course to delete. / 削除するコースのID
      */
     public function deleteCourse(int $course_id): void
     {

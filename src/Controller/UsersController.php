@@ -56,7 +56,7 @@ class UsersController extends AppController
         return $this->redirect($target);
     }
 
-    // ==================== 管理画面 ====================
+    // ==================== Admin screen / 管理画面 ====================
 
     public function adminIndex(): void
     {
@@ -213,7 +213,7 @@ class UsersController extends AppController
         return null;
     }
 
-    // ==================== 受講者画面 ====================
+    // ==================== Learner screen / 受講者画面 ====================
 
     public function setting(): ?Response
     {

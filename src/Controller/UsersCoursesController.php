@@ -15,20 +15,20 @@ namespace App\Controller;
 class UsersCoursesController extends AppController
 {
     /**
-     * 受講コース一覧（ホーム画面）
+     * List of enrolled courses (home screen) / 受講コース一覧（ホーム画面）
      */
     public function index(): void
     {
         $user_id = $this->readAuthUser('id');
 
-        // 全体のお知らせを取得
+        // Retrieve global notice / 全体のお知らせを取得
         $setting = $this->fetchTable('Settings')->find()
             ->where(['setting_key' => 'information'])
             ->first();
 
         $info = $setting ? $setting->setting_value : '';
 
-        // お知らせ一覧を取得
+        // Retrieve notice list / お知らせ一覧を取得
         $infos = $this->fetchTable('Infos')->getInfos($user_id, 2);
 
         $no_info = '';
@@ -36,7 +36,7 @@ class UsersCoursesController extends AppController
             $no_info = __('お知らせはありません');
         }
 
-        // 受講コース情報の取得
+        // Retrieve enrolled course information / 受講コース情報の取得
         $courses = $this->fetchTable('UsersCourses')->getCourseRecord($user_id);
 
         $no_record = '';

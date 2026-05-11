@@ -26,7 +26,7 @@
 			</tr>
 			</table>
 			<?php
-				// PHP8.1対応
+				// PHP 8.1 compatibility. / PHP8.1対応
 				$this->Form->unlockField('csvfile.full_path');
 				
 				echo $this->Form->create(null,['type'=>'file']);

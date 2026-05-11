@@ -42,11 +42,11 @@ class InfosTable extends AppTable
     }
 
     /**
-     * お知らせ一覧を取得
+     * Get the list of announcements. / お知らせ一覧を取得
      *
-     * @param int      $user_id ユーザID
-     * @param int|null $limit   取得件数
-     * @return array お知らせ一覧
+     * @param int      $user_id User ID. / ユーザID
+     * @param int|null $limit   Number of records to retrieve. / 取得件数
+     * @return array List of announcements. / お知らせ一覧
      */
     public function getInfos(int $user_id, ?int $limit = null): array
     {
@@ -65,11 +65,11 @@ class InfosTable extends AppTable
     }
 
     /**
-     * お知らせへのアクセス権限チェック
+     * Check access permission to an announcement. / お知らせへのアクセス権限チェック
      *
-     * @param int $user_id ユーザID
-     * @param int $info_id お知らせID
-     * @return bool true: アクセス可能, false: アクセス不可
+     * @param int $user_id User ID. / ユーザID
+     * @param int $info_id Announcement ID. / お知らせID
+     * @return bool true: accessible, false: not accessible. / true: アクセス可能, false: アクセス不可
      */
     public function hasRight(int $user_id, int $info_id): bool
     {
@@ -79,11 +79,11 @@ class InfosTable extends AppTable
     }
 
     /**
-     * 閲覧可能なお知らせのIDリストを取得
+     * Get the list of viewable announcement IDs. / 閲覧可能なお知らせのIDリストを取得
      *
-     * @param int      $user_id ユーザID
-     * @param int|null $limit   取得件数
-     * @return array お知らせIDリスト
+     * @param int      $user_id User ID. / ユーザID
+     * @param int|null $limit   Number of records to retrieve. / 取得件数
+     * @return array List of announcement IDs. / お知らせIDリスト
      */
     private function getInfoIdList(int $user_id, ?int $limit = null): array
     {
@@ -109,7 +109,7 @@ EOF;
 
         $info_id_list = array_column($rows, 'id');
 
-        // 該当するお知らせIDが1件も存在しない場合、エラー防止のためダミーIDを追加
+        // If no matching announcement IDs exist, add a dummy ID to prevent errors. / 該当するお知らせIDが1件も存在しない場合、エラー防止のためダミーIDを追加
         if (count($info_id_list) === 0) {
             $info_id_list[] = 0;
         }

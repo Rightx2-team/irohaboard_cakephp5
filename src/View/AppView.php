@@ -15,8 +15,8 @@ namespace App\View;
 use Cake\View\View;
 
 /**
- * AppView - 全Viewの基底クラス
- * CakePHP5ではセッションは $this->request->getSession() で操作する。
+ * AppView - Base class for all Views. / AppView - 全Viewの基底クラス
+ * In CakePHP5, the session is managed via $this->request->getSession(). / CakePHP5ではセッションは $this->request->getSession() で操作する。
  */
 class AppView extends View
 {
@@ -24,12 +24,12 @@ class AppView extends View
     {
         parent::initialize();
 
-        // カスタムHelperの読み込み
+        // Load custom Helper. / カスタムHelperの読み込み
         $this->loadHelper('AppForm');
     }
 
     // -------------------------------------------------------------------------
-    // セッション操作
+    // Session operations / セッション操作
     // -------------------------------------------------------------------------
 
     public function readSession(string $key): mixed
@@ -53,9 +53,9 @@ class AppView extends View
     }
 
     // -------------------------------------------------------------------------
-    // 認証ユーザ情報
-    // CakePHP5ではViewからは $loginedUser 変数（Controllerでsetした値）を使う。
-    // ただし互換性のためメソッドも残す。
+    // Authenticated user information / 認証ユーザ情報
+    // In CakePHP5, use the $loginedUser variable (set by the Controller) from the View. / CakePHP5ではViewからは $loginedUser 変数（Controllerでsetした値）を使う。
+    // Methods are kept for compatibility. / ただし互換性のためメソッドも残す。
     // -------------------------------------------------------------------------
 
     public function readAuthUser(?string $key = null): mixed
@@ -79,7 +79,7 @@ class AppView extends View
     }
 
     // -------------------------------------------------------------------------
-    // ページ種別チェック
+    // Page type check / ページ種別チェック
     // -------------------------------------------------------------------------
 
     public function isAdminPage(): bool
