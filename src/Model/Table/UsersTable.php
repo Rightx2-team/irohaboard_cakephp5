@@ -42,12 +42,6 @@ class UsersTable extends AppTable
                     'provider' => 'table',
                     'message'  => 'Login ID is duplicated',
                 ],
-                'alphaNumericMB' => [
-                    'rule'    => function ($value) {
-                        return $this->alphaNumericMB($value);
-                    },
-                    'message' => 'Login ID must be alphanumeric',
-                ],
                 'between' => [
                     'rule'    => ['lengthBetween', 4, 32],
                     'message' => 'Login ID must be 4 to 32 characters',

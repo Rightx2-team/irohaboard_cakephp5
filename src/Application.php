@@ -59,22 +59,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $service = new AuthenticationService([
             'unauthenticatedRedirect' => $isAdmin ? '/admin/users/login' : '/users/login',
             'queryParam' => 'redirect',
-            'identifiers' => [
-                'Authentication.Password' => [
-                    'fields' => [
-                        'username' => 'username',
-                        'password' => 'password',
-                    ],
-                    'resolver' => [
-                        'className' => 'Authentication.Orm',
-                        'userModel' => 'Users',
-                        'finder' => 'all',
-                    ],
-                    'passwordHasher' => [
-                        'className' => 'Authentication.Default',
-                    ],
-                ],
-            ],
         ]);
 
         $service->loadAuthenticator('Authentication.Session');
@@ -87,6 +71,16 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             'urlChecker' => [
                 'className' => 'Authentication.String',
                 'useRegex' => true,
+            ],
+            // Pass LdapIdentifier directly to FormAuthenticator
+            // FormAuthenticatorにLdapIdentifierを直接渡す
+            'identifier' => [
+                'className' => \App\Identifier\LdapIdentifier::class,
+                'fields' => [
+                    'username' => 'username',
+                    'password' => 'password',
+                ],
+                'userModel' => 'Users',
             ],
         ]);
 

@@ -70,6 +70,18 @@
             ]); ?>
         </div>
         <div class="form-group">
+            <label><?= __('認証方式') ?> / Authentication Method</label>
+            <select name="auth_type" id="auth_type" class="form-control" style="max-width:300px;" onchange="togglePasswordFields()">
+                <option value="local" <?= ($user->auth_type ?? 'local') === 'local' ? 'selected' : '' ?>>
+                    <?= __('ローカル') ?> (Local DB)
+                </option>
+                <option value="ldap" <?= ($user->auth_type ?? '') === 'ldap' ? 'selected' : '' ?>>
+                    AD / LDAP (daitetsu.local)
+                </option>
+            </select>
+            <small class="text-muted">AD / <?= __('ローカル') ?></small>
+        </div>
+        <div class="form-group">
             <label><?= __('メールアドレス') ?></label>
             <?= $this->Form->control('email', ['label' => false, 'class' => 'form-control', 'type' => 'email']); ?>
         </div>
@@ -117,14 +129,24 @@
                 <?php endif; ?>
             </div>
         </div>
-        <div class="form-group">
-            <label><?= empty($user->id) ? __('パスワード') : __('新しいパスワード (変更する場合のみ)') ?></label>
-            <?= $this->Form->control('new_password', ['label' => false, 'class' => 'form-control', 'type' => 'password', 'autocomplete' => 'new-password', 'value' => '']); ?>
+        <div id="password-fields">
+            <div class="form-group">
+                <label><?= empty($user->id) ? __('パスワード') : __('新しいパスワード (変更する場合のみ)') ?></label>
+                <?= $this->Form->control('new_password', ['label' => false, 'class' => 'form-control', 'type' => 'password', 'autocomplete' => 'new-password', 'value' => '']); ?>
+            </div>
+            <div class="form-group">
+                <label><?= __('パスワード (確認用)') ?></label>
+                <?= $this->Form->control('new_password2', ['label' => false, 'class' => 'form-control', 'type' => 'password', 'autocomplete' => 'new-password', 'value' => '']); ?>
+            </div>
         </div>
-        <div class="form-group">
-            <label><?= __('パスワード (確認用)') ?></label>
-            <?= $this->Form->control('new_password2', ['label' => false, 'class' => 'form-control', 'type' => 'password', 'autocomplete' => 'new-password', 'value' => '']); ?>
-        </div>
+        <script>
+        function togglePasswordFields() {
+            var authType = document.getElementById('auth_type').value;
+            var pwFields = document.getElementById('password-fields');
+            pwFields.style.display = (authType === 'ldap') ? 'none' : '';
+        }
+        togglePasswordFields();
+        </script>
         <div class="form-group">
             <?= $this->Form->button(__('保存'), ['class' => 'btn btn-primary']); ?>
             <a href="<?= $this->Url->build(['action' => 'adminIndex']) ?>" class="btn btn-default"><?= __('キャンセル') ?></a>
